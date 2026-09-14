@@ -421,4 +421,6 @@ html, body {
     flex-direction: row;
   }
   .stitch { transform: rotate(66deg); }
+  #nav { gap: 1rem; }
+  #nav-indicator { font-size: 0.72rem; min-width: 0; white-space: nowrap; }
 }
