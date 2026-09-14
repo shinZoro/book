@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="admin-link" href="/admin.html">edit</a>
+
+  <div id="stage">
+    <div id="book">
+      <!-- Front cover -->
+      <div class="cover-screen front" id="front-cover">
+        <div class="cover-card" id="front-cover-card">
+          <div class="cover-placeholder" id="front-cover-placeholder">
+            <h1 id="front-cover-title">Happy Birthday</h1>
+          </div>
+          <div class="cover-hint">tap to open</div>
+        </div>
+      </div>
+
+      <!-- Spreads -->
+      <div id="spread-layer"></div>
+
+      <!-- Closing / epilogue -->
+      <div class="cover-screen epilogue-card hidden" id="closing-screen">
+        <div class="cover-card epilogue-card" style="width:100%; cursor:default;">
+          <div class="epilogue-body">
+            <img id="epilogue-img" class="hidden" alt="Epilogue" />
+            <div id="epilogue-placeholder" class="quote-placeholder" style="max-width:82%; max-height:60%; aspect-ratio: 3/4;">epilogue image goes here</div>
+            <div class="ask-question">Did you like it?</div>
+            <div class="ask-buttons">
+              <button id="btn-yes">Yes 💛</button>
+              <button id="btn-no">Not really</button>
+            </div>
+            <div class="reply-message" id="reply-message"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="nav">
+    <button class="nav-btn" id="btn-prev" aria-label="Previous">&#8592;</button>
+    <div id="nav-indicator">cover</div>
+    <button class="nav-btn" id="btn-next" aria-label="Next">&#8594;</button>
+  </div>
+
+  <div id="reveal-screen">
+    <img id="reveal-img" alt="True cover" />
+    <p id="reveal-message"></p>
+  </div>
+
+  <script src="js/book.js"></script>
+</body>
+</html>

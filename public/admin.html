@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book Admin</title>
+<link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+<div id="login-screen" class="login-screen">
+  <form id="login-form" class="login-box">
+    <h1>Book Admin</h1>
+    <input type="password" id="login-password" placeholder="Password" autocomplete="current-password" />
+    <button type="submit">Enter</button>
+    <p id="login-error" class="error"></p>
+  </form>
+</div>
+
+<div id="admin-app" class="admin-app hidden">
+  <aside class="sidebar">
+    <h2>Pages</h2>
+    <button class="side-item" data-target="cover">Front Cover</button>
+    <div class="side-list" id="page-list"></div>
+    <button class="side-item" data-target="epilogue">Epilogue</button>
+    <button class="side-item" data-target="truecover">True Cover</button>
+    <button class="side-item" data-target="global">Global Settings</button>
+    <div class="sidebar-footer">
+      <a href="/" target="_blank">View book ↗</a>
+      <button id="logout-btn">Log out</button>
+    </div>
+  </aside>
+
+  <main class="editor">
+    <div id="save-bar" class="save-bar">
+      <span id="save-status">All changes saved</span>
+      <button id="save-btn">Save</button>
+    </div>
+
+    <section id="panel-cover" class="panel">
+      <h2>Front Cover</h2>
+      <p class="hint">Upload the closed book cover image. This is what she sees first.</p>
+      <div class="upload-row">
+        <div class="preview cover-preview" id="cover-preview">No image yet</div>
+        <input type="file" id="cover-file" accept="image/*" />
+      </div>
+      <label>Title (shown if no cover image is uploaded)</label>
+      <input type="text" id="cover-title" />
+    </section>
+
+    <section id="panel-page" class="panel hidden">
+      <h2 id="page-heading">Page</h2>
+      <div class="spread-editor">
+        <div class="editor-left">
+          <h3>Left page — quote image</h3>
+          <p class="hint">Upload a quote image, then drag to move and use the corner handle to resize.</p>
+          <input type="file" id="quote-file" accept="image/*" />
+          <div class="stage-left" id="stage-left">
+            <div class="quote-box" id="quote-box">
+              <div class="quote-box-inner" id="quote-box-inner">no image</div>
+              <div class="resize-handle" id="resize-handle"></div>
+            </div>
+          </div>
+          <div class="fields-row">
+            <label>X% <input type="number" id="q-x" step="0.5" /></label>
+            <label>Y% <input type="number" id="q-y" step="0.5" /></label>
+            <label>W% <input type="number" id="q-w" step="0.5" /></label>
+            <label>H% <input type="number" id="q-h" step="0.5" /></label>
+            <label>Rotate° <input type="number" id="q-r" step="1" /></label>
+          </div>
+        </div>
+        <div class="editor-right">
+          <h3>Right page — handwritten note</h3>
+          <p class="hint">This image fills the whole page (minus margin).</p>
+          <input type="file" id="note-file" accept="image/*" />
+          <div class="stage-right" id="stage-right">
+            <div class="note-box" id="note-box">no image</div>
+          </div>
+          <label class="checkbox-row"><input type="checkbox" id="margin-override" /> Override global margin for this page</label>
+          <div class="fields-row" id="margin-fields">
+            <label>Top <input type="number" id="m-top" /></label>
+            <label>Right <input type="number" id="m-right" /></label>
+            <label>Bottom <input type="number" id="m-bottom" /></label>
+            <label>Left <input type="number" id="m-left" /></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-epilogue" class="panel hidden">
+      <h2>Epilogue</h2>
+      <p class="hint">Shown when the book closes at the end, above the "Did you like it?" question.</p>
+      <div class="upload-row">
+        <div class="preview" id="epilogue-preview">No image yet</div>
+        <input type="file" id="epilogue-file" accept="image/*" />
+      </div>
+    </section>
+
+    <section id="panel-truecover" class="panel hidden">
+      <h2>True Cover</h2>
+      <p class="hint">Revealed full-screen if she says she liked the book.</p>
+      <div class="upload-row">
+        <div class="preview" id="truecover-preview">No image yet</div>
+        <input type="file" id="truecover-file" accept="image/*" />
+      </div>
+      <label>Message shown on "Yes"</label>
+      <textarea id="yes-message" rows="2"></textarea>
+      <label>Message shown on "Not really"</label>
+      <textarea id="no-message" rows="2"></textarea>
+    </section>
+
+    <section id="panel-global" class="panel hidden">
+      <h2>Global Settings</h2>
+      <p class="hint">Default margin (in pixels) applied to every right-hand note page, unless a page overrides it.</p>
+      <div class="fields-row">
+        <label>Top <input type="number" id="g-top" /></label>
+        <label>Right <input type="number" id="g-right" /></label>
+        <label>Bottom <input type="number" id="g-bottom" /></label>
+        <label>Left <input type="number" id="g-left" /></label>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
