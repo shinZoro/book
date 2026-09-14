@@ -1,6 +1,8 @@
 :root {
-  --bg-1: #f7f3fc;
-  --bg-2: #e4d8f6;
+  --bg-1: #fdfcff;
+  --bg-2: #ede4fa;
+  --thread: #e0483c;
+  --thread-dark: #c22f27;
   --cover-shadow: rgba(140, 110, 190, 0.28);
   --page-color: #fffdfe;
   --page-edge: #ece2f7;
@@ -170,6 +172,30 @@ html, body {
 
 .page-right {
   box-shadow: 0 20px 45px rgba(140,110,190,0.2), inset 14px 0 24px -22px rgba(90,60,140,0.25);
+}
+
+/* Red thread binding stitched down the spine between the two pages */
+.thread-binding {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  bottom: 5%;
+  width: 46px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 3;
+  pointer-events: none;
+}
+.stitch {
+  width: 44px;
+  height: 9px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--thread-dark), var(--thread));
+  box-shadow: 0 1px 3px rgba(150,30,25,0.35);
+  transform: rotate(-24deg);
 }
 
 .page-number {
@@ -384,4 +410,15 @@ html, body {
   .page-left, .page-right { flex: 1 1 50%; }
   .page-left { box-shadow: 0 20px 45px rgba(140,110,190,0.2), inset 0 -14px 24px -22px rgba(90,60,140,0.25); }
   .page-right { box-shadow: 0 20px 45px rgba(140,110,190,0.2), inset 0 14px 24px -22px rgba(90,60,140,0.25); }
+  .thread-binding {
+    left: 5%;
+    right: 5%;
+    top: 50%;
+    bottom: auto;
+    width: auto;
+    height: 46px;
+    transform: translateY(-50%);
+    flex-direction: row;
+  }
+  .stitch { transform: rotate(66deg); }
 }

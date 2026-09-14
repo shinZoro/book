@@ -93,7 +93,19 @@
 
     el.appendChild(left);
     el.appendChild(right);
+    el.appendChild(buildThreadBinding());
     return el;
+  }
+
+  function buildThreadBinding() {
+    const thread = document.createElement('div');
+    thread.className = 'thread-binding';
+    for (let i = 0; i < 16; i++) {
+      const stitch = document.createElement('div');
+      stitch.className = 'stitch';
+      thread.appendChild(stitch);
+    }
+    return thread;
   }
 
   function renderCover() {
