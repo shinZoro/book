@@ -149,9 +149,13 @@ input[type="number"] { width: 80px; padding: 0.4em 0.5em; border-radius: 6px; bo
 .editor-left, .editor-right { flex: 1 1 380px; min-width: 320px; }
 
 .stage-left, .stage-right {
+  /* Matches the real book page's shape (and, up to this max-width, its actual
+     pixel size on a typical desktop) so object-fit:cover crops identically
+     here and in the live book — see #book/.page in style.css. */
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  max-width: 541px;
+  aspect-ratio: 541 / 640;
   background: #fffdf8;
   border: 1px solid #e3dbcb;
   border-radius: 8px;
@@ -189,8 +193,8 @@ input[type="number"] { width: 80px; padding: 0.4em 0.5em; border-radius: 6px; bo
 }
 
 .note-box {
+  /* top/right/bottom/left are set inline in admin.js from the page's actual margin */
   position: absolute;
-  inset: 24px;
   background: #e7ddce;
   display: flex;
   align-items: center;

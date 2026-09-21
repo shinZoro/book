@@ -249,16 +249,23 @@
     if (!page.noteTransform) page.noteTransform = { zoom: 1, posX: 50, posY: 50 };
     const nt = page.noteTransform;
 
+    const override = !!page.margin;
+    const m = page.margin || content.globalMargin;
+
     const noteBox = document.getElementById('note-box');
+    // Same inset the live book applies (see marginFor()/note-fill in book.js),
+    // so the crop preview here matches the published page exactly.
+    noteBox.style.top = m.top + 'px';
+    noteBox.style.right = m.right + 'px';
+    noteBox.style.bottom = m.bottom + 'px';
+    noteBox.style.left = m.left + 'px';
     noteBox.innerHTML = page.noteImage
       ? `<img src="${page.noteImage}" style="object-position:${nt.posX}% ${nt.posY}%; transform-origin:${nt.posX}% ${nt.posY}%; transform:scale(${nt.zoom});" />`
       : 'no image';
     document.getElementById('note-zoom').value = nt.zoom;
     document.getElementById('note-zoom').disabled = !page.noteImage;
 
-    const override = !!page.margin;
     document.getElementById('margin-override').checked = override;
-    const m = page.margin || content.globalMargin;
     document.getElementById('m-top').value = m.top;
     document.getElementById('m-right').value = m.right;
     document.getElementById('m-bottom').value = m.bottom;
@@ -314,6 +321,7 @@
         if (!content.pages[idx].margin) content.pages[idx].margin = { ...content.globalMargin };
         content.pages[idx].margin[side] = parseFloat(e.target.value) || 0;
         markDirty();
+        renderPagePanel(idx);
       };
     });
 
