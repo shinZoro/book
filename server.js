@@ -26,6 +26,11 @@ function defaultQuoteTransform() {
   return { x: 15, y: 20, width: 70, height: 45, rotation: 0 };
 }
 
+function defaultNoteTransform() {
+  // zoom >= 1, posX/posY are the focal point as a percentage of the image
+  return { zoom: 1, posX: 50, posY: 50 };
+}
+
 function defaultContent() {
   const pages = [];
   for (let i = 0; i < PAGE_COUNT; i++) {
@@ -33,6 +38,7 @@ function defaultContent() {
       quoteImage: null,
       quoteTransform: defaultQuoteTransform(),
       noteImage: null,
+      noteTransform: defaultNoteTransform(),
       margin: null // null = inherit globalMargin
     });
   }
@@ -64,9 +70,14 @@ function loadContent() {
         quoteImage: null,
         quoteTransform: defaultQuoteTransform(),
         noteImage: null,
+        noteTransform: defaultNoteTransform(),
         margin: null
       });
     }
+    parsed.pages.forEach((page) => {
+      if (!page.quoteTransform) page.quoteTransform = defaultQuoteTransform();
+      if (!page.noteTransform) page.noteTransform = defaultNoteTransform();
+    });
     if (!parsed.globalMargin) parsed.globalMargin = defaultMargin();
     return parsed;
   } catch (e) {

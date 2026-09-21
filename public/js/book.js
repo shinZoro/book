@@ -75,9 +75,13 @@
     noteFill.style.left = margin.left + 'px';
 
     if (page.noteImage) {
+      const nt = page.noteTransform || { zoom: 1, posX: 50, posY: 50 };
       const img = document.createElement('img');
       img.src = page.noteImage;
       img.alt = 'Handwritten note';
+      img.style.objectPosition = `${nt.posX}% ${nt.posY}%`;
+      img.style.transformOrigin = `${nt.posX}% ${nt.posY}%`;
+      img.style.transform = `scale(${nt.zoom || 1})`;
       noteFill.appendChild(img);
     } else {
       const ph = document.createElement('div');

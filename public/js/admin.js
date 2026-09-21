@@ -223,6 +223,7 @@
 
   // ---------- Page (quote + note) ----------
   let quoteDrag = null; // {mode:'move'|'resize', startX, startY, orig}
+  let noteDrag = null; // {startX, startY, orig}
 
   function renderPagePanel(idx) {
     const page = content.pages[idx];
@@ -245,8 +246,15 @@
     box.style.transform = `rotate(${qt.rotation || 0}deg)`;
     inner.innerHTML = page.quoteImage ? `<img src="${page.quoteImage}" />` : 'no image';
 
+    if (!page.noteTransform) page.noteTransform = { zoom: 1, posX: 50, posY: 50 };
+    const nt = page.noteTransform;
+
     const noteBox = document.getElementById('note-box');
-    noteBox.innerHTML = page.noteImage ? `<img src="${page.noteImage}" />` : 'no image';
+    noteBox.innerHTML = page.noteImage
+      ? `<img src="${page.noteImage}" style="object-position:${nt.posX}% ${nt.posY}%; transform-origin:${nt.posX}% ${nt.posY}%; transform:scale(${nt.zoom});" />`
+      : 'no image';
+    document.getElementById('note-zoom').value = nt.zoom;
+    document.getElementById('note-zoom').disabled = !page.noteImage;
 
     const override = !!page.margin;
     document.getElementById('margin-override').checked = override;
@@ -271,6 +279,13 @@
       if (!file) return;
       const url = await uploadFile(file);
       content.pages[idx].noteImage = url;
+      content.pages[idx].noteTransform = { zoom: 1, posX: 50, posY: 50 };
+      markDirty();
+      renderPagePanel(idx);
+    };
+
+    document.getElementById('note-zoom').oninput = (e) => {
+      content.pages[idx].noteTransform.zoom = parseFloat(e.target.value) || 1;
       markDirty();
       renderPagePanel(idx);
     };
@@ -340,24 +355,52 @@
       };
     };
 
+    const noteStage = document.getElementById('stage-right');
+    const noteBox = document.getElementById('note-box');
+
+    noteBox.onmousedown = (e) => {
+      if (!content.pages[idx].noteImage) return;
+      e.preventDefault();
+      const rect = noteStage.getBoundingClientRect();
+      noteDrag = {
+        startX: e.clientX,
+        startY: e.clientY,
+        rectW: rect.width,
+        rectH: rect.height,
+        orig: { ...content.pages[idx].noteTransform }
+      };
+    };
+
     document.onmousemove = (e) => {
-      if (!quoteDrag) return;
-      const dxPct = ((e.clientX - quoteDrag.startX) / quoteDrag.rectW) * 100;
-      const dyPct = ((e.clientY - quoteDrag.startY) / quoteDrag.rectH) * 100;
-      const qt = content.pages[idx].quoteTransform;
-      if (quoteDrag.mode === 'move') {
-        qt.x = clamp(quoteDrag.orig.x + dxPct, 0, 100 - qt.width);
-        qt.y = clamp(quoteDrag.orig.y + dyPct, 0, 100 - qt.height);
-      } else {
-        qt.width = clamp(quoteDrag.orig.width + dxPct, 5, 100 - qt.x);
-        qt.height = clamp(quoteDrag.orig.height + dyPct, 5, 100 - qt.y);
+      if (quoteDrag) {
+        const dxPct = ((e.clientX - quoteDrag.startX) / quoteDrag.rectW) * 100;
+        const dyPct = ((e.clientY - quoteDrag.startY) / quoteDrag.rectH) * 100;
+        const qt = content.pages[idx].quoteTransform;
+        if (quoteDrag.mode === 'move') {
+          qt.x = clamp(quoteDrag.orig.x + dxPct, 0, 100 - qt.width);
+          qt.y = clamp(quoteDrag.orig.y + dyPct, 0, 100 - qt.height);
+        } else {
+          qt.width = clamp(quoteDrag.orig.width + dxPct, 5, 100 - qt.x);
+          qt.height = clamp(quoteDrag.orig.height + dyPct, 5, 100 - qt.y);
+        }
+        markDirty();
+        renderPagePanel(idx);
+      } else if (noteDrag) {
+        // Dragging the note image pans its focal point; direction is inverted
+        // since moving the mouse right should reveal more of the image's left side.
+        const dxPct = ((e.clientX - noteDrag.startX) / noteDrag.rectW) * 100;
+        const dyPct = ((e.clientY - noteDrag.startY) / noteDrag.rectH) * 100;
+        const nt = content.pages[idx].noteTransform;
+        nt.posX = clamp(noteDrag.orig.posX - dxPct, 0, 100);
+        nt.posY = clamp(noteDrag.orig.posY - dyPct, 0, 100);
+        markDirty();
+        renderPagePanel(idx);
       }
-      markDirty();
-      renderPagePanel(idx);
     };
 
     document.onmouseup = () => {
       quoteDrag = null;
+      noteDrag = null;
     };
   }
 
