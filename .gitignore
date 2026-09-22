@@ -1,5 +1,8 @@
 node_modules/
 .env
-data/content.json
-public/uploads/*
-!public/uploads/.gitkeep
+
+# data/content.json and public/uploads/ are intentionally NOT ignored.
+# Most free Node hosts wipe the disk on every sleep/restart/redeploy, so
+# this app's content is meant to be committed once you're happy with a
+# page — that way a redeploy just re-checks-out the same files instead
+# of losing them. See "Deploying" in README.md.
