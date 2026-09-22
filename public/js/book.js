@@ -6,6 +6,11 @@
   let content = null;
   let current = COVER;
   let animating = false;
+  let mobileHalf = 0; // 0 = quote/left, 1 = note/right — only meaningful on mobile, for pages in [0, PAGE_COUNT)
+
+  function isMobile() {
+    return window.matchMedia('(max-width: 720px)').matches;
+  }
 
   const bookEl = document.getElementById('book');
   const frontCover = document.getElementById('front-cover');
@@ -98,6 +103,9 @@
     el.appendChild(left);
     el.appendChild(right);
     el.appendChild(buildThreadBinding());
+    if (isMobile()) {
+      el.classList.add(mobileHalf === 0 ? 'show-quote-only' : 'show-note-only');
+    }
     return el;
   }
 
@@ -141,9 +149,16 @@
   function updateNav() {
     btnPrev.disabled = current === COVER;
     btnNext.disabled = current === CLOSING;
-    if (current === COVER) navIndicator.textContent = 'cover';
-    else if (current === CLOSING) navIndicator.textContent = 'the end';
-    else navIndicator.textContent = `page ${current * 2 + 1}–${current * 2 + 2} of ${PAGE_COUNT * 2}`;
+    if (current === COVER) {
+      navIndicator.textContent = 'cover';
+    } else if (current === CLOSING) {
+      navIndicator.textContent = 'the end';
+    } else if (isMobile()) {
+      const pageNum = current * 2 + (mobileHalf === 0 ? 1 : 2);
+      navIndicator.textContent = `page ${pageNum} of ${PAGE_COUNT * 2}`;
+    } else {
+      navIndicator.textContent = `page ${current * 2 + 1}–${current * 2 + 2} of ${PAGE_COUNT * 2}`;
+    }
   }
 
   function showSpreadInstant(index) {
@@ -162,6 +177,7 @@
 
     // Leaving the cover
     if (current === COVER && target >= 0) {
+      mobileHalf = 0;
       bookEl.classList.add('opening');
       showSpreadInstant(target);
       spreadLayer.style.opacity = '0';
@@ -256,8 +272,58 @@
     }, 380);
   }
 
-  function next() { goTo(current + 1); }
-  function prev() { goTo(current - 1); }
+  // Mobile only: turns from the quote half to the note half (or back) of the
+  // SAME page, using the same page-turn animation as a full spread change.
+  function turnHalf(newHalf, direction) {
+    if (animating) return;
+    animating = true;
+    btnPrev.disabled = true;
+    btnNext.disabled = true;
+
+    const outEl = spreadLayer.querySelector('.spread');
+    if (outEl) outEl.classList.add(direction === 'next' ? 'turn-out-next' : 'turn-out-prev');
+
+    setTimeout(() => {
+      mobileHalf = newHalf;
+      showSpreadInstant(current);
+      const inEl = spreadLayer.querySelector('.spread');
+      inEl.classList.add(direction === 'next' ? 'turn-in-from-next' : 'turn-in-from-prev', 'turn-in-instant');
+      requestAnimationFrame(() => {
+        inEl.classList.remove('turn-in-instant');
+        requestAnimationFrame(() => {
+          inEl.classList.remove('turn-in-from-next', 'turn-in-from-prev');
+        });
+      });
+      updateNav();
+      setTimeout(() => { animating = false; }, 420);
+    }, 380);
+  }
+
+  function next() {
+    if (isMobile() && current >= 0 && current < PAGE_COUNT) {
+      if (mobileHalf === 0) {
+        turnHalf(1, 'next');
+        return;
+      }
+      mobileHalf = 0; // next page starts on its quote half
+    }
+    goTo(current + 1);
+  }
+
+  function prev() {
+    if (isMobile() && current >= 0 && current < PAGE_COUNT) {
+      if (mobileHalf === 1) {
+        turnHalf(0, 'prev');
+        return;
+      }
+    }
+    if (isMobile() && current > 0) {
+      mobileHalf = 1; // stepping back onto a page lands on its note half
+    } else {
+      mobileHalf = 0;
+    }
+    goTo(current - 1);
+  }
 
   function setupEvents() {
     btnNext.addEventListener('click', next);

@@ -405,23 +405,24 @@ html, body {
 .admin-link:hover { opacity: 1; }
 
 @media (max-width: 720px) {
-  #book { width: 96vw; height: 70vh; }
+  /* One page at a time: quote and note each get the full screen instead of
+     sharing a cramped stacked spread. See show-quote-only/show-note-only,
+     set in book.js based on which half is currently being viewed. */
+  #book { width: 92vw; height: auto; max-height: 82vh; aspect-ratio: 541 / 640; }
   .cover-card { width: 82%; }
-  .spread { flex-direction: column; }
-  .page-left, .page-right { flex: 1 1 50%; }
-  .page-left { box-shadow: 0 20px 45px rgba(140,110,190,0.2), inset 0 -14px 24px -22px rgba(90,60,140,0.25); }
-  .page-right { box-shadow: 0 20px 45px rgba(140,110,190,0.2), inset 0 14px 24px -22px rgba(90,60,140,0.25); }
-  .thread-binding {
-    left: 5%;
-    right: 5%;
-    top: 50%;
-    bottom: auto;
-    width: auto;
-    height: 46px;
-    transform: translateY(-50%);
-    flex-direction: row;
+
+  .spread.show-quote-only .page-right,
+  .spread.show-note-only .page-left,
+  .spread.show-quote-only .thread-binding,
+  .spread.show-note-only .thread-binding {
+    display: none;
   }
-  .stitch { transform: rotate(66deg); }
+  .spread.show-quote-only .page-left,
+  .spread.show-note-only .page-right {
+    flex: 1 1 100%;
+    box-shadow: 0 20px 45px rgba(140,110,190,0.2);
+  }
+
   #nav { gap: 1rem; }
   #nav-indicator { font-size: 0.72rem; min-width: 0; white-space: nowrap; }
 }
