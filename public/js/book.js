@@ -3,6 +3,14 @@
   const COVER = -1;
   const CLOSING = PAGE_COUNT; // index right after the last page
 
+  // The page shape everything (margins, admin preview) is designed against —
+  // a typical desktop page is 541x640 (see #book/.page in style.css). Margins
+  // are stored as px at that reference size, then converted to % here so they
+  // stay proportionally identical no matter how big the page actually renders
+  // (a laptop vs. a phone, where mobile now shows one full page at a time).
+  const PAGE_REF_W = 541;
+  const PAGE_REF_H = 640;
+
   let content = null;
   let current = COVER;
   let animating = false;
@@ -74,10 +82,10 @@
     const margin = marginFor(page);
     const noteFill = document.createElement('div');
     noteFill.className = 'note-fill';
-    noteFill.style.top = margin.top + 'px';
-    noteFill.style.right = margin.right + 'px';
-    noteFill.style.bottom = margin.bottom + 'px';
-    noteFill.style.left = margin.left + 'px';
+    noteFill.style.top = (margin.top / PAGE_REF_H) * 100 + '%';
+    noteFill.style.bottom = (margin.bottom / PAGE_REF_H) * 100 + '%';
+    noteFill.style.left = (margin.left / PAGE_REF_W) * 100 + '%';
+    noteFill.style.right = (margin.right / PAGE_REF_W) * 100 + '%';
 
     if (page.noteImage) {
       const nt = page.noteTransform || { zoom: 1, posX: 50, posY: 50 };

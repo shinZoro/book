@@ -1,5 +1,10 @@
 (function () {
   const PAGE_COUNT = 21;
+  // Must match PAGE_REF_W/H in book.js — the reference page shape margins are
+  // stored against, converted to % so the preview matches the live book at
+  // any size (see the note-box inset below).
+  const PAGE_REF_W = 541;
+  const PAGE_REF_H = 640;
   let content = null;
   let currentTarget = 'cover'; // 'cover' | 'page-<n>' | 'epilogue' | 'truecover' | 'global'
   let dirty = false;
@@ -254,11 +259,12 @@
 
     const noteBox = document.getElementById('note-box');
     // Same inset the live book applies (see marginFor()/note-fill in book.js),
-    // so the crop preview here matches the published page exactly.
-    noteBox.style.top = m.top + 'px';
-    noteBox.style.right = m.right + 'px';
-    noteBox.style.bottom = m.bottom + 'px';
-    noteBox.style.left = m.left + 'px';
+    // converted to % of the reference page size so it matches the published
+    // page at any size — laptop, phone, or a resized admin window.
+    noteBox.style.top = (m.top / PAGE_REF_H) * 100 + '%';
+    noteBox.style.bottom = (m.bottom / PAGE_REF_H) * 100 + '%';
+    noteBox.style.left = (m.left / PAGE_REF_W) * 100 + '%';
+    noteBox.style.right = (m.right / PAGE_REF_W) * 100 + '%';
     noteBox.innerHTML = page.noteImage
       ? `<img src="${page.noteImage}" style="object-position:${nt.posX}% ${nt.posY}%; transform-origin:${nt.posX}% ${nt.posY}%; transform:scale(${nt.zoom});" />`
       : 'no image';
