@@ -1,0 +1,428 @@
+{
+  "title": "Happy 21st Birthday",
+  "coverImage": "/uploads/3a10b9cbef0c6282.jpg",
+  "epilogueImage": "/uploads/91e1e1978af9aae0.jpg",
+  "trueCoverImage": "/uploads/78eb34e595efe4d0.jpg",
+  "globalMargin": {
+    "top": 5,
+    "right": 0,
+    "bottom": 5,
+    "left": 0
+  },
+  "yesMessage": "They say you should not judge a book by its cover but now that you have already read the book, here's the actual cover. \nHAPPY BIRTHDAY ANA.",
+  "noMessage": "You should not lie Ana...choose the right option.",
+  "pages": [
+    {
+      "quoteImage": "/uploads/0055072a81f27f04.jpg",
+      "quoteTransform": {
+        "x": 12.781869381566121,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/9cfa315a18e6b9f2.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50,
+        "posY": 50
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/926ba7ce4c85bbb1.jpg",
+      "quoteTransform": {
+        "x": 15.184844218202823,
+        "y": 20.156254768517105,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/c88e5d3a419587ec.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50,
+        "posY": 49.0625
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/d79507284d99d974.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/2972220547a75cf8.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50.36968576709797,
+        "posY": 46.875
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/e3c3de49ba0d70dd.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/0a1a32f1ff996262.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 49.63031423290203,
+        "posY": 43.90625
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/fb53f290fef345af.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/3f4daf7499303cc3.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50,
+        "posY": 50
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/a6cc8fc4cffa38c6.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/6a0c323e03a1fa90.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 52.033271719038815,
+        "posY": 57.96875
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/7a85670c17358c02.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/a5f13c0280358520.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50,
+        "posY": 50
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/1b57f1b092c82d47.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/6797f55dfe9e86c3.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 49.44547134935305,
+        "posY": 64.84375
+      },
+      "margin": {
+        "top": 5,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "quoteImage": "/uploads/15516e45af4146d3.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/ae53f2602d9d080c.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 51.66358595194085,
+        "posY": 38.90625
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/2783842384bf6dee.jpg",
+      "quoteTransform": {
+        "x": 14.773817060742765,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/4e3409f570087b98.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 49.26062846580407,
+        "posY": 42.8125
+      },
+      "margin": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "quoteImage": "/uploads/884b605877d9914d.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/d1f7adce6087ee80.jpg",
+      "noteTransform": {
+        "zoom": 1.12,
+        "posX": 0.8317929759704228,
+        "posY": 30.625
+      },
+      "margin": {
+        "top": 0,
+        "right": 0,
+        "bottom": 5,
+        "left": 0
+      }
+    },
+    {
+      "quoteImage": "/uploads/cae95b9944245172.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/53ded9ef3f59127b.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 37.430683918669125,
+        "posY": 23.4375
+      },
+      "margin": {
+        "top": 5,
+        "right": 0,
+        "bottom": 5,
+        "left": 10
+      }
+    },
+    {
+      "quoteImage": "/uploads/969a3a76c1d0d70f.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/d0a4f75bf4104f7e.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 48.521256931608136,
+        "posY": 29.0625
+      },
+      "margin": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "quoteImage": "/uploads/a3ad67da13a4cecc.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/d295d514da0f9277.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50,
+        "posY": 41.5625
+      },
+      "margin": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "quoteImage": "/uploads/16e578a25c8a3c1a.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/03305d53f45a668d.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50,
+        "posY": 39.0625
+      },
+      "margin": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "quoteImage": "/uploads/c73cd9f9f56f7494.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/6af7076857894ed9.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50,
+        "posY": 50
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/935ece83b5aed8d7.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/d19d487154a6eb25.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 48.33641404805915,
+        "posY": 39.21875
+      },
+      "margin": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "quoteImage": "/uploads/939c77e7609b8728.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/345bbdc74e8c3cd2.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50,
+        "posY": 50
+      },
+      "margin": null
+    },
+    {
+      "quoteImage": "/uploads/f99f3abb7494c656.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/ab37b54fecd81b5f.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 48.70609981515712,
+        "posY": 56.09375
+      },
+      "margin": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "quoteImage": "/uploads/386a3d70e7f1a798.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/ad17f899ac9810f3.jpg",
+      "noteTransform": {
+        "zoom": 1,
+        "posX": 50.18484288354898,
+        "posY": 36.875
+      },
+      "margin": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    },
+    {
+      "quoteImage": "/uploads/c4aa9ca7f8950d94.jpg",
+      "quoteTransform": {
+        "x": 15,
+        "y": 20,
+        "width": 70,
+        "height": 45,
+        "rotation": 0
+      },
+      "noteImage": "/uploads/902a72f780d4a48f.jpg",
+      "noteTransform": {
+        "zoom": 1.18,
+        "posX": 22.273567467652498,
+        "posY": 50.3125
+      },
+      "margin": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    }
+  ]
+}
