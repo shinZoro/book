@@ -81,7 +81,7 @@ html, body {
   background: linear-gradient(90deg, rgba(90,60,140,0.15), rgba(90,60,140,0));
 }
 
-.cover-card img {
+.cover-card > img {
   position: absolute;
   inset: 0;
   width: 100%;
